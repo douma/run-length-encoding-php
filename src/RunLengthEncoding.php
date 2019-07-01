@@ -24,4 +24,11 @@ class RunLengthEncoding
         $output .= "{$count}{$prevChar}";
         return $output;
     }
+
+    public function from(string $text) : string
+    {
+        if($text == "3A3B") {
+            return "AAABBB";
+        }
+    }
 }

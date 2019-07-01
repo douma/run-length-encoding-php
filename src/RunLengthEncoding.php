@@ -27,8 +27,23 @@ class RunLengthEncoding
 
     public function from(string $text) : string
     {
-        if($text == "3A3B") {
-            return "AAABBB";
+        $prevChar = false;
+        $count = "0";
+        $output = "";
+        foreach(str_split($text,1) as $char) {
+            if((int) $char > 0 && (int) $prevChar > 0) {
+                $count .= $prevChar;
+                $prevChar = $char;
+                continue;
+            } elseif((int) $char > 0) {
+                $count = $char;
+                $prevChar = $char;
+                continue;
+            }
+            $output .= str_pad("", (int) $count, $char);
+            $prevChar = $char;
         }
+
+        return $output;
     }
 }

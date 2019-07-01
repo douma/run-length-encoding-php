@@ -19,5 +19,6 @@ final class RunLengthEncodingTest extends TestCase
     {
         $runLengthEncoding = new \RunLengthEncoding\RunLengthEncoding();
         $this->assertEquals("AAABBB", $runLengthEncoding->from("3A3B"));
+        $this->assertEquals("AAABBBCCC", $runLengthEncoding->from("3A3B3C"));
     }
 }

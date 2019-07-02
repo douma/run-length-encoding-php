@@ -28,11 +28,11 @@ class RunLengthEncoding
     public function from(string $text) : string
     {
         $prevChar = false;
-        $count = "0";
+        $count = "";
         $output = "";
         foreach(str_split($text,1) as $char) {
             if((int) $char > 0 && (int) $prevChar > 0) {
-                $count .= $prevChar;
+                $count .= $char;
                 $prevChar = $char;
                 continue;
             } elseif((int) $char > 0) {
@@ -43,7 +43,6 @@ class RunLengthEncoding
             $output .= str_pad("", (int) $count, $char);
             $prevChar = $char;
         }
-
         return $output;
     }
 }
